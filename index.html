@@ -1,0 +1,275 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SU NFS Home Mount Assistant</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header class="hero">
+
+    <div class="hero-top">
+
+        <h1>
+            <i class="fa-solid fa-server"></i>
+            SU NFS Home Mount Assistant
+        </h1>
+
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+    </div>
+
+    <p>
+        Generate the required terminal commands to mount your
+        Stellenbosch University NFS Home directory.
+    </p>
+
+</header>
+
+<main>
+
+    <!-- Input Card -->
+
+    <section class="glass card">
+
+        <h2>Student Details</h2>
+
+        <label for="studentNumber">
+            Student Number
+        </label>
+
+        <input
+            type="text"
+            id="studentNumber"
+            maxlength="8"
+            placeholder="e.g. 12345678">
+
+        <div class="button-group">
+
+            <button id="generateBtn" class="primary">
+                <i class="fa-solid fa-terminal"></i>
+                Generate Commands
+            </button>
+
+            <button id="clearBtn">
+                <i class="fa-solid fa-trash"></i>
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Generated Commands -->
+
+    <section class="glass card">
+
+        <div class="section-title">
+
+            <h2>Generated Commands</h2>
+
+            <button id="copyAllBtn">
+                <i class="fa-solid fa-copy"></i>
+                Copy All
+            </button>
+
+        </div>
+
+        <div id="terminalContainer">
+
+            <!-- JS inserts terminal blocks -->
+
+        </div>
+
+    </section>
+
+
+    <!-- Progress -->
+
+    <section class="glass card">
+
+        <div class="section-title">
+
+            <h2>Progress Checklist</h2>
+
+            <button id="resetChecklist">
+                <i class="fa-solid fa-rotate-left"></i>
+                Reset Progress
+            </button>
+
+        </div>
+
+        <div class="checklist">
+
+            <label>
+                <input type="checkbox" id="step1">
+                Create mount point
+            </label>
+
+            <label>
+                <input type="checkbox" id="step2">
+                Mount NFS
+            </label>
+
+            <label>
+                <input type="checkbox" id="step3">
+                Move script
+            </label>
+
+            <label>
+                <input type="checkbox" id="step4">
+                Change permissions
+            </label>
+
+            <label>
+                <input type="checkbox" id="step5">
+                Run script
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+
+    <section class="glass card">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="accordion">
+
+            <button class="accordion-btn">
+                What is SSHFS?
+            </button>
+
+            <div class="accordion-content">
+                SSHFS allows you to mount a remote directory securely over SSH,
+                making it appear as a normal folder on your computer.
+            </div>
+
+        </div>
+
+        <div class="accordion">
+
+            <button class="accordion-btn">
+                Why do I type "yes" the first time?
+            </button>
+
+            <div class="accordion-content">
+                The first connection saves the server fingerprint so future
+                connections can verify the server automatically.
+            </div>
+
+        </div>
+
+        <div class="accordion">
+
+            <button class="accordion-btn">
+                Where do I download cs-stow.sh?
+            </button>
+
+            <div class="accordion-content">
+                Download it from your Computer Science practical resources or
+                the location provided by your lecturer.
+            </div>
+
+        </div>
+
+        <div class="accordion">
+
+            <button class="accordion-btn">
+                Why does it ask for my password?
+            </button>
+
+            <div class="accordion-content">
+                SSHFS authenticates using your Stellenbosch University account,
+                so entering your password is expected.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Troubleshooting -->
+
+    <section class="glass card">
+
+        <details>
+
+            <summary>
+                Troubleshooting
+            </summary>
+
+            <ul>
+
+                <li>
+                    <strong>Connection refused</strong><br>
+                    Check your internet connection or ensure you are on the
+                    university VPN if required.
+                </li>
+
+                <li>
+                    <strong>Permission denied</strong><br>
+                    Verify your student number and password.
+                </li>
+
+                <li>
+                    <strong>sshfs: command not found</strong><br>
+                    Install SSHFS using your operating system's package manager.
+                </li>
+
+                <li>
+                    <strong>Host key verification failed</strong><br>
+                    Remove the old host entry from your
+                    <code>~/.ssh/known_hosts</code> file and reconnect.
+                </li>
+
+            </ul>
+
+        </details>
+
+    </section>
+
+</main>
+
+<footer>
+
+    Created for Stellenbosch University Computer Science students.
+
+</footer>
+
+
+<!-- Toast -->
+
+<div id="toast" class="toast">
+
+    Copied!
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
