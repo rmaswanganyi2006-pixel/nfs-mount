@@ -182,7 +182,9 @@ function generateCommands() {
 
         "chmod 700 ~/nfs-home/cs-stow.sh",
 
-        "~/nfs-home/cs-stow.sh ~/nfs-home --backup"
+        "~/nfs-home/cs-stow.sh ~/nfs-home --backup",
+
+        "ssh-add ~/nfs-home/.ssh/id_rsa"
 
     ];
 
